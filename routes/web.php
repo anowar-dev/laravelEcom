@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\exampol\FirstController;
+use App\Http\Controllers\LaravelEcom;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +20,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/about', [FirstController::class, 'aboutIndex'])->name('about.us');
+
+
+Route::get('/contact', [FirstController::class, 'index'])->name('contact.us');
+
+
+// Invokable controller
+Route::get('/test', LaravelEcom::class);
+
+
+Route::get('/country', function(){
+    return view('country');
+})->middleware('country');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
